@@ -17,10 +17,21 @@ public class Servidor {
     public static void main(String[] args) {
         // Agregar algunas canciones a la lista para buscar
         canciones.add(new Propiedades("Bohemian Rhapsody", 1975, "Rock"));
-        canciones.add(new Propiedades("Stairway to Heaven", 1971, "Rock"));
-        canciones.add(new Propiedades("Hotel California", 1977, "Rock"));
-        canciones.add(new Propiedades("Sweet Child o' Mine", 1987, "Rock"));
-        canciones.add(new Propiedades("Imagine", 1971, "Pop"));
+        canciones.add(new Propiedades("Despacito", 2017, "Reggaeton"));
+        canciones.add(new Propiedades("Gasolina", 2004, "Reggaeton"));
+        canciones.add(new Propiedades("Limbo", 2012, "Reggaeton"));
+        canciones.add(new Propiedades("Bon, Bon", 2010, "Hip Hop"));
+        canciones.add(new Propiedades("Calypso", 2018, "Pop"));
+        canciones.add(new Propiedades("Obsesión", 2002, "Bachata"));
+        canciones.add(new Propiedades("El Perdedor", 2014, "Bachata"));
+        canciones.add(new Propiedades("Vivir La Vida", 2013, "Salsa"));
+        canciones.add(new Propiedades("Propuesta Indecente", 2013, "Bachata"));
+        canciones.add(new Propiedades("Perdóname", 2006, "Pop"));
+        canciones.add(new Propiedades("La Tortura", 2005, "Reggaeton"));
+        canciones.add(new Propiedades("Bailando", 2014, "Reggaeton"));
+        canciones.add(new Propiedades("Dura", 2018, "Reggaeton"));
+        canciones.add(new Propiedades("La Camisa Negra", 2005, "Pop Rock"));
+        canciones.add(new Propiedades("La Bicicleta", 2016, "Vallenato/Pop"));
 
         try {
             // Crear un ServerSocket en el puerto 3000 para aceptar conexiones de clientes
