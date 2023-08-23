@@ -1,0 +1,14 @@
+{
+  "java.project.sourcePaths": [
+      "src"
+  ],
+  "java.project.outputPath": "bin",
+  "java.project.referencedLibraries": {
+      "include": [
+          "lib/selenium-java-4.1.0/*.jar",
+          "lib/selenium-java-4.1.0/lib/*.jar",
+          "lib/flying-saucer-pdf-9.1.22.jar",
+          "lib/itextpdf-5.5.13.2.jar"
+      ]
+  }
+}
