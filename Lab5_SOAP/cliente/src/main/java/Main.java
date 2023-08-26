@@ -3,29 +3,35 @@ import controlador.MemoriaService;
 import controlador.Contrato;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        MemoriaService CancionsRepositoryService = new MemoriaService();
-        Contrato CancionsRepository = CancionsRepositoryService.getMemoriaPort();
+        try {
+            MemoriaService Memoria = new MemoriaService();
+            Contrato Canciones = Memoria.getMemoriaPort();
 
-        List<Cancion> filteredByGenreCancions = CancionsRepository.getGenero("Reggaeton");
-        System.out.println("Filtro por genero:");
-        for(Cancion s: filteredByGenreCancions.stream().collect(Collectors.toList())) {
-            System.out.println(s.getTitulo());
-        }
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Ingrese una palabra para filtrar (o 'exit' para salir): ");
+            String query = scanner.nextLine();
 
-        List<Cancion> filteredByYearCancions = CancionsRepository.getAnio(2014);
-        System.out.println("\nFiltro por año:");
-        for(Cancion s: filteredByYearCancions.stream().collect(Collectors.toList())) {
-            System.out.println(s.getTitulo());
-        }
+            List<Cancion> canciones = Canciones.getGenero("");
 
-        List<Cancion> filteredByNameCancions = CancionsRepository.getTitulo("de");
-        System.out.println("\nFiltro por nombre:");
-        for(Cancion s: filteredByNameCancions.stream().collect(Collectors.toList())) {
-            System.out.println(s.getTitulo());
+            System.out.println("Resultados para la palabra: " + query);
+            for (Cancion cancion : canciones.stream().collect(Collectors.toList())) {
+                if (cancion.getTitulo().toLowerCase().contains(query.toLowerCase()) ||
+                        cancion.getGenero().toLowerCase().contains(query.toLowerCase()) ||
+                        String.valueOf(cancion.getAnio()).contains(query)) {
+                    System.out.println("Título: " + cancion.getTitulo());
+                    System.out.println("Género: " + cancion.getGenero());
+                    System.out.println("Año: " + cancion.getAnio());
+                    System.out.println("----------------------");
+                }
+            }
+            scanner.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
