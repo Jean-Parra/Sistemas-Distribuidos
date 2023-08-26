@@ -1,36 +1,31 @@
+import modelo.Cancion;
+import controlador.MemoriaService;
+import controlador.Contrato;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import clases.*;
-
-
-
 public class Main {
+    public static void main(String[] args) {
+        MemoriaService CancionsRepositoryService = new MemoriaService();
+        Contrato CancionsRepository = CancionsRepositoryService.getMemoriaPort();
 
-  public static void main(String[] args) {
-    System.out.println("hola");
-    
-    ServicioCancionesService servicio = new ServicioCancionesService();
-    ServicioCanciones cliente = servicio.getServicioCancionesPort();
+        List<Cancion> filteredByGenreCancions = CancionsRepository.getGenero("Reggaeton");
+        System.out.println("Filtro por genero:");
+        for(Cancion s: filteredByGenreCancions.stream().collect(Collectors.toList())) {
+            System.out.println(s.getTitulo());
+        }
 
-    List<Cancion> filteredByGenreCancions = cliente.getByGenre("Rock");
-    System.out.println("Cancions filtered by genre:");
-    for(Cancion s: filteredByGenreCancions.stream().collect(Collectors.toList())) {
-        System.out.println(s.getTitle());
+        List<Cancion> filteredByYearCancions = CancionsRepository.getAnio(2014);
+        System.out.println("\nFiltro por año:");
+        for(Cancion s: filteredByYearCancions.stream().collect(Collectors.toList())) {
+            System.out.println(s.getTitulo());
+        }
+
+        List<Cancion> filteredByNameCancions = CancionsRepository.getTitulo("de");
+        System.out.println("\nFiltro por nombre:");
+        for(Cancion s: filteredByNameCancions.stream().collect(Collectors.toList())) {
+            System.out.println(s.getTitulo());
+        }
     }
-
-    List<Cancion> filteredByYearCancions = cliente.getByYear(2007);
-    System.out.println("\nCancions filtered by year:");
-    for(Cancion s: filteredByYearCancions.stream().collect(Collectors.toList())) {
-        System.out.println(s.getTitle());
-    }
-
-    List<Cancion> filteredByNameCancions = cliente.getByName("Cancion 1");
-    System.out.println("\nCancions filtered by name:");
-    for(Cancion s: filteredByNameCancions.stream().collect(Collectors.toList())) {
-        System.out.println(s.getTitle());
-    }
-
-  }
-
 }

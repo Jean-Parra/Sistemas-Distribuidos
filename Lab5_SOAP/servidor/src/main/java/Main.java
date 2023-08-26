@@ -1,11 +1,11 @@
 import javax.xml.ws.Endpoint;
 
-import controlador.ServicioCanciones;
+import Controlador.Memoria;
 
 public class Main {
-  
-  public static void main(String[] args) {
-    Endpoint.publish("http://localhost:9999/ws/canciones", new ServicioCanciones()); 
-  }
-
+    public static void main(String[] args) {
+        String direccion = "http://localhost:3000/canciones";
+        System.out.println("Servidor corriendo en: " + direccion);
+        Endpoint.publish(direccion, new Memoria());
+    }
 }

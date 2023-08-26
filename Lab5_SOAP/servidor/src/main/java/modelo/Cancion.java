@@ -1,42 +1,38 @@
-package modelo;
+package Modelo;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Cancion {
-    private final String title;
-    private final int year;
-    private final String genre;
+    private final String titulo;
+    private final int anio;
+    private final String genero;
 
-    public Cancion(String title,  int year, String genre) {
-        this.title = title;
-        this.genre = genre;
-        this.year = year;
+    public Cancion(String titulo, int anio, String genero) {
+        this.titulo = titulo;
+        this.anio = anio;
+        this.genero = genero;
     }
 
-    // Required by JAXB
     public Cancion() {
-        this.title = "";
-        this.year = 0;
-        this.genre = "";
-       
+        this.titulo = "";
+        this.anio = 0;
+        this.genero = "";
     }
 
     @XmlElement
-    public String getTitle() {
-        return title;
-    }
-
-
-    @XmlElement
-    public String getGenre() {
-        return genre;
+    public String getTitulo() {
+        return titulo;
     }
 
     @XmlElement
+    public int getAnio() {
+        return anio;
+    }
 
-    public int getYear() {
-        return year;
+    @XmlElement
+    public String getGenero() {
+        return genero;
     }
 }
